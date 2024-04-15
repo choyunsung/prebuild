@@ -3,7 +3,7 @@ var path = require('path')
 var os = require('os')
 
 var backends = {
-  'node-gyp': require('node-gyp')(),
+  'node-gyp': require('@ingstory/node-gyp')(),
   'node-ninja': require('node-ninja')(),
   'nw-gyp': require('nw-gyp')()
 }
@@ -12,7 +12,7 @@ var backends = {
 var jsEngine = process.jsEngine || 'v8'
 if (jsEngine !== 'v8') {
   backends['node-gyp'] = require(path.join(
-    path.dirname(process.execPath), 'node_modules/npm/node_modules/node-gyp'))()
+    path.dirname(process.execPath), 'node_modules/npm/node_modules/@ingstory/node-gyp'))()
 }
 
 function runGyp (opts, cb) {
